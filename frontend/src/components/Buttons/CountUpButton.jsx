@@ -8,6 +8,6 @@ export const CountUpButton = ({
   isDisabled,
 }) => (
   <RoundButton onClick={onClick} disabled={isDisabled}>
-    +
+    ＋
   </RoundButton>
 )

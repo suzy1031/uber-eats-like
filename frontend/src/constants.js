@@ -5,5 +5,5 @@ export const REQUEST_STATE = {
 }
 
 export const HTTP_STATUS_CODE = {
-  NOT_ACCEPTABlE: 406,
+  NOT_ACCEPTABLE: 406,
 }

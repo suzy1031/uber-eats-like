@@ -1,0 +1,63 @@
+digraph UberEatsLike {
+rankdir = "LR";
+ranksep = "0.5";
+nodesep = "0.4";
+pad = "0.4,0.4";
+margin = "0,0";
+concentrate = "true";
+labelloc = "t";
+fontsize = "13";
+fontname = "Arial BoldMT";
+splines = "spline";
+node[ shape  =  "Mrecord" , fontsize  =  "10" , fontname  =  "ArialMT" , margin  =  "0.07,0.05" , penwidth  =  "1.0"];
+edge[ fontname  =  "ArialMT" , fontsize  =  "7" , dir  =  "both" , arrowsize  =  "0.9" , penwidth  =  "1.0" , labelangle  =  "32" , labeldistance  =  "1.8"];
+rankdir = "TB";
+label = "UberEatsLike domain model\n\n";
+m_Food [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Food</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="description">description <font face="Arial ItalicMT" color="grey60">text ∗</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="price">price <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="restaurant_id">restaurant_id <font face="Arial ItalicMT" color="grey60">integer ∗ FK</font></td></tr>
+</table>
+}>];
+m_LineFood [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">LineFood</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="active">active <font face="Arial ItalicMT" color="grey60">boolean ∗</font></td></tr>
+  <tr><td align="left" width="130" port="count">count <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="food_id">food_id <font face="Arial ItalicMT" color="grey60">integer ∗ FK</font></td></tr>
+  <tr><td align="left" width="130" port="order_id">order_id <font face="Arial ItalicMT" color="grey60">integer FK</font></td></tr>
+  <tr><td align="left" width="130" port="restaurant_id">restaurant_id <font face="Arial ItalicMT" color="grey60">integer ∗ FK</font></td></tr>
+</table>
+}>];
+m_Order [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Order</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="restaurant_id">restaurant_id <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="total_price">total_price <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+</table>
+}>];
+m_Restaurant [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Restaurant</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="fee">fee <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="time_required">time_required <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+</table>
+}>];
+  m_Restaurant -> m_Food [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Order -> m_Food [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Food -> m_LineFood [arrowhead = "none", arrowtail = "none", weight = "2"];
+  m_Order -> m_Restaurant [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Order -> m_LineFood [arrowhead = "normal", arrowtail = "none", weight = "2"];
+}

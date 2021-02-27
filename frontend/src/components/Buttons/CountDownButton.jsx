@@ -8,6 +8,6 @@ export const CountDownButton = ({
   isDisabled,
 }) => (
   <RoundButton onClick={onClick} disabled={isDisabled}>
-    -
+    ー
   </RoundButton>
 )
