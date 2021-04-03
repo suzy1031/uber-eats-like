@@ -3,6 +3,7 @@ module Api
     class OrdersController < ApplicationController
       def create
         # 複数のidの配列がclientから送られてくる
+        # clinetから送られたidを使ってwhereでデータを取得し変数に格納
         posted_line_foods = LineFood.where(id: params[:line_food_ids])
         order = Order.new(
           restaurant_id: posted_line_foods.first.restaurant_id,

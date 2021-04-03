@@ -51,6 +51,8 @@ export const Orders = () => {
     window.location.reload();
   };
 
+  // <Button>{orderButtonLabel()}</Button>として使う
+  // ボタンのlabelがstateの状態に応じて動的に切り替えられる
   const orderButtonLabel = () => {
     switch (state.postState) {
       case REQUEST_STATE.LOADING:

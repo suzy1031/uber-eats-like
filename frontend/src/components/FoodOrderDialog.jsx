@@ -1,19 +1,24 @@
-import React from 'react';
-import { DialogContent, Dialog, DialogTitle, DialogActions } from '@material-ui/core';
-import styled from 'styled-components';
+import React from "react";
+import {
+  DialogContent,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+} from "@material-ui/core";
+import styled from "styled-components";
 
 // components
-import { SubText } from './StyledText';
-import { CountUpButton } from './Buttons/CountUpButton';
-import { CountDownButton } from './Buttons/CountDownButton';
-import { OrderButton } from './Buttons/OrderButton';
+import { SubText } from "./StyledText";
+import { CountUpButton } from "./Buttons/CountUpButton";
+import { CountDownButton } from "./Buttons/CountDownButton";
+import { OrderButton } from "./Buttons/OrderButton";
 
 // images
-import OrderHeaderImage from '../images/order-header.png';
+import OrderHeaderImage from "../images/order-header.png";
 
 export const FoodOrderDialog = ({
-  food,
-  countNumber,
+  food, // object{id: 1, name: フード名_1・・・}が渡される
+  countNumber, // + -ボタンで操作された注文数のprops
   isOpen,
   onClose,
   onClickCountUp,
@@ -23,44 +28,42 @@ export const FoodOrderDialog = ({
   return (
     <Dialog open={isOpen} onClose={onClose}>
       <OrderHeader src={OrderHeaderImage} alt="order header" />
-      <DialogTitle>
-        {food.name}
-      </DialogTitle>
+      <DialogTitle>{food.name}</DialogTitle>
       <DialogContent>
         <DescriptionWrapper>
-          <SubText>
-            {food.description}
-          </SubText>
+          <SubText>{food.description}</SubText>
         </DescriptionWrapper>
       </DialogContent>
       <DialogActions>
         <CountersWrapper>
           <CountItem>
-            <CountDownButton onClick={() => onClickCountDown()} idDisabled={countNumber <= 1} />
+            <CountDownButton
+              onClick={() => onClickCountDown()}
+              idDisabled={countNumber <= 1}
+            />
           </CountItem>
           <CountItem>
-            <CountNum>
-              {countNumber}
-            </CountNum>
+            <CountNum>{countNumber}</CountNum>
           </CountItem>
           <CountItem>
-            <CountUpButton onClick={() => onClickCountUp()} isDisabled={countNumber >= 9}></CountUpButton>
+            <CountUpButton
+              onClick={() => onClickCountUp()}
+              isDisabled={countNumber >= 9}
+            ></CountUpButton>
           </CountItem>
           <OrderTextWrapper>
             <OrderButton onClick={() => onClickOrder()}>
               <OrderButtonTextWrapper>
                 {`${countNumber}点を注文に追加`}
               </OrderButtonTextWrapper>
-              <PriceWrapper>
-                {`${countNumber*food.price}`}
-              </PriceWrapper>
+              <PriceWrapper>{`${countNumber * food.price}`}</PriceWrapper>
             </OrderButton>
-            </OrderTextWrapper>
+          </OrderTextWrapper>
         </CountersWrapper>
       </DialogActions>
     </Dialog>
-  )
-}
+  );
+};
 
 const OrderHeader = styled.img`
   width: 100%;
@@ -80,11 +83,11 @@ const CountersWrapper = styled.div`
 
 const CountItem = styled.div`
   margin: 0 8px;
-`
+`;
 
 const CountNum = styled.div`
   padding-top: 10px;
-`
+`;
 
 const OrderTextWrapper = styled.div`
   display: flex;

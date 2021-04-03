@@ -1,13 +1,13 @@
 import axios from "axios";
 import { orders } from "../urls/index";
 
-export const postOrder = (params) => {
-  return axios
-    .post(orders, {
+export const postOrder = async (params) => {
+  try {
+    const res = await axios.post(orders, {
       line_food_ids: params.line_food_ids,
-    })
-    .then((res) => {
-      return res.data;
-    })
-    .catch((e) => console.log(e));
+    });
+    return res.data;
+  } catch (e) {
+    return console.log(e);
+  }
 };

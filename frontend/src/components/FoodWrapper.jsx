@@ -1,13 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 // components
-import { SubText } from './StyledText';
+import { SubText } from "./StyledText";
 
 // constants
-import { COLORS } from '../style_constants';
+import { COLORS } from "../style_constants";
 
 export const FoodWrapper = ({
+  // Foods.jsxでmapで展開された一つ一つのfoodデータのprops
+  // object{id: 1, name: フード名_3・・・}
   food,
   onClickFoodWrapper,
   imageUrl,
@@ -16,17 +18,13 @@ export const FoodWrapper = ({
     <FoodDetail>
       {food.name}
       <DescriptionWrapper>
-        <SubText>
-          {food.description}
-        </SubText>
+        <SubText>{food.description}</SubText>
       </DescriptionWrapper>
-      <PriceWrapper>
-        ¥{food.price}
-      </PriceWrapper>
+      <PriceWrapper>¥{food.price}</PriceWrapper>
     </FoodDetail>
     <FoodImageNode src={imageUrl} />
   </Wrapper>
-)
+);
 
 const Wrapper = styled.div`
   display: flex;
@@ -46,11 +44,11 @@ const FoodDetail = styled.div`
 
 const DescriptionWrapper = styled.div`
   height: 75px;
-`
+`;
 
 const PriceWrapper = styled.div`
   margin-top: 16px;
-`
+`;
 
 const FoodImageNode = styled.img`
   width: 250px;
